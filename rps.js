@@ -5,20 +5,28 @@ function getComputerChoice() {
     return computerChoice;
 }
 
+/*console.log(getComputerChoice());*/
+
 function getPlayerChoice() {
-    let input = prompt("Rock, Paper, Scissors?");
-    while (input == null) {
-        input = prompt("Rock, Paper, Scissors?");
-        if (input == false) {
+    let validatedInput = false;
+    while(validatedInput == false) {
+        const input = prompt("Rock, Paper, Scissors");
+        if(input == null) {
             continue;
         }
-        if(options.includes(input)){
-            return input;
+        const inputInLower = input.toLowerCase();
+        if(options.includes(inputInLower)) {
+            validatedInput = true;
+            return inputInLower;
         }
     }
-    input = input.toLowerCase();
-
 }
+
+/*console.log(getPlayerChoice());*/
+
+/*function validInput(any) {
+    return options.includes(any);
+}*/
 
 function playRound(playerSelection, computerSelection) {
     if(playerSelection == computerSelection) {
@@ -35,8 +43,31 @@ else {
 }
 }
 
+function playGame() {
+    console.log("Welcome!")
+    for(let i = 0; i < 5; i++) {
+        const playerSelection = getPlayerChoice();
+        const computerSelection = getComputerChoice();
+        console.log(playRound(playerSelection, computerSelection));  
+    }
+}
 
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
-console.log(computerSelection)
-console.log(playRound(playerSelection, computerSelection));
+playGame()
+
+/*
+function getPlayerChoice() {
+    let validatedInput = false;
+    while(validatedInput == false) {
+        const choice = prompt("Rock, Paper, Scissors");
+        if(choice == null) {
+            continue;
+        }
+        const choiceInLower = choice.toLowerCase();
+        if(options.includes(choiceInLower)) {
+            validatedInput = true;
+            return choiceInLower;
+        }
+    }
+}
+*/
+
