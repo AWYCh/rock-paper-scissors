@@ -1,3 +1,15 @@
+//Add an event listener to the buttons that call your playRound function with the correct playerSelection every time a button is clicked.
+//Add a div for displaying results and change all of your console.logs into DOM methods.
+//Display the running score, and announce a winner of the game once one player reaches 5 points.
+
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
+const results = document.querySelector("#results");
+
+let playerScore = 0;
+let computerScore = 0;
+
 const options = ["rock","paper","scissors"];
 
 function getComputerChoice() {
@@ -5,10 +17,22 @@ function getComputerChoice() {
     return computerChoice;
 }
 
-/*console.log(getComputerChoice());*/
+//console.log(getComputerChoice());
 
-function getPlayerChoice() {
-    let validatedInput = false;
+//function getPlayerChoice() {}
+
+/*const buttons = document.querySelectorAll("button");
+buttons.forEach((button) => {
+    button.addEventListener("click", getPlayerChoice)});
+
+function getPlayerChoice(e) {
+  let playerSelection = (e.target.id);
+  playerChoice = e.target.textContent;
+  playRound(playerSelection, getComputerChoice());
+}*/
+
+
+    /*let validatedInput = false;
     while(validatedInput == false) {
         let input = prompt("Rock, Paper, Scissors");
         if(input == null) {
@@ -20,26 +44,30 @@ function getPlayerChoice() {
             return inputInLower;
         }
     }
-}
+}*/
 
-/*console.log(getPlayerChoice());*/
+//console.log(getPlayerChoice());
 
-function checkResult(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection) {
     if(playerSelection == computerSelection) {
+        results.textContent="It's a tie!";
         return "Tie";
     }
     else if((playerSelection == "rock" && computerSelection == "scissors") ||
             (playerSelection == "paper" && computerSelection == "rock") ||
             (playerSelection == "scissors" && computerSelection == "paper")
 ){
+    results.textContent=`You Win! ${playerSelection} beats ${computerSelection}`;
     return "PlayerWins";
+    
 }
 else {
+    results.textContent=`You Lose! ${computerSelection} beats ${playerSelection}`;
     return "ComputerWins";
 }
 }
 
-function playRound(playerSelection, computerSelection) {
+/*function playRound(playerSelection, computerSelection) {
     if(checkResult(playerSelection, computerSelection) == "Tie") {
         return "It's a tie!";
     }
@@ -50,24 +78,37 @@ function playRound(playerSelection, computerSelection) {
 else {
     return `You Lose! ${computerSelection} beats ${playerSelection}`;
 }
-}
+}*/
 
-function playGame() {
-    let playerScore = 0;
-    let computerScore = 0;
-    console.log("Welcome!")
-    for(let i = 0; i < 5; i++) {
+//const playerSelection = getPlayerChoice();
+const computerSelection = getComputerChoice();
+//console.log(playRound(playerSelection, computerSelection));
+
+rock.addEventListener("click", () => {
+    playRound("rock",getComputerChoice());
+})
+
+paper.addEventListener("click", () => {
+    playRound("paper",getComputerChoice());
+})
+
+scissors.addEventListener("click", () => {
+    playRound("scissors",getComputerChoice());
+})
+
+/*function playGame() {
+    //for(let i = 0; i < 5; i++) {
         const playerSelection = getPlayerChoice();
         const computerSelection = getComputerChoice();
         console.log(playRound(playerSelection, computerSelection));
-        if (checkResult(playerSelection, computerSelection) == "PlayerWins") {
+        if (playRound(playerSelection, computerSelection) == "PlayerWins") {
             playerScore++;
         }
-        if (checkResult(playerSelection, computerSelection) == "ComputerWins") {
+        if (playRound(playerSelection, computerSelection) == "ComputerWins") {
             computerScore++;    
         } 
-    }
-    console.log("Game Over!")
+    }*/
+    /*console.log("Game Over!")
     if(playerScore > computerScore) {
         console.log("You win overall, best of five!"); 
     }
@@ -77,7 +118,12 @@ function playGame() {
     else {
         console.log("It's a tie overall, best of five!");
     } 
-}
+}*/
 
-playGame()
+//playGame()
+
+
+
+
+
 
