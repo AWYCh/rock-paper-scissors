@@ -4,22 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="styles.css">
     <script src="rps.js" defer></script>
 </head>
 <body>
-    <h1 id="title">Rock Paper Scissors</h1>
-    <div class="buttons">
-        <button id="Rock">Rock</button>
-        <button id="Paper">Paper</button>
-        <button id="Scissors">Scissors</button>
+    <h1 id="title"><span class="r">Rock</span> <span class="p">Paper</span> <span class="s">Scissors</span></h1>
+    <div class="container">
+        <div class="scoreboard">
+            <div class="scoreboard-top">
+                <div class="player">
+                    <p id="player-name">Player</p>
+                    <p id="player-points"></p>
+                    <p id="player-choice"></p>
+                </div>
+                <div class="computer">
+                    <p id="computer-name">Computer</p>
+                    <p id="computer-points"></p>
+                    <p id="computer-choice"></p>
+                </div>
+            </div>
+            <div class="scoreboard-bottom">
+                <p id="game-result"></p>
+            </div>
+        </div>
+        <div class="buttons">
+            <button id="Rock"><img src="images/rock.png" id="Rock" alt="Rock">Rock</button>
+            <button id="Paper"><img src="images/paper.png" id="Paper" alt="Paper">Paper</button>
+            <button id="Scissors"><img src="images/scissors.png" id="Scissors" alt="Scissors">Scissors</button>
+        </div>
+        <div class="results">
+            <p id="round-result"></p>
+        </div>
+        <button id="restart">Restart Game</button>
     </div>
-    <div class="results">
-        <p id="round-result"></p>
-        <p id="player-points"></p>
-        <p id="computer-points"></p>
-        <p id="game-result"></p>
-    </div>
-    <button id="restart">Restart Game</button>
 </body>
 </html>
 
